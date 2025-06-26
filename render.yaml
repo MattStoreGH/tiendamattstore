@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: tienda-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: DB_HOST
+        value: eu1-budget.falixserver.net
+      - key: DB_PORT
+        value: 3306
+      - key: DB_USER
+        value: u1719223_7r6ubyBMOR
+      - key: DB_PASSWORD
+        value: zwtjAvicA^p!d.TRFGrvfWjY
+      - key: DB_NAME
+        value: s1719223_1b633fd3d789
