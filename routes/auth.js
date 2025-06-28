@@ -7,8 +7,8 @@ router.post('/login', async (req, res) => {
   const { usuario, password } = req.body;
 
   try {
-    const [rows] = await db.query(
-      'SELECT * FROM empleados WHERE usuario = ? AND password = ?',
+    const { rows } = await db.query(
+      'SELECT * FROM empleados WHERE usuario = $1 AND password = $2',
       [usuario, password]
     );
 
@@ -18,6 +18,7 @@ router.post('/login', async (req, res) => {
       res.status(401).json({ success: false, message: 'Credenciales inválidas' });
     }
   } catch (error) {
+    console.error("❌ Error en login:", error);
     res.status(500).json({ success: false, message: 'Error del servidor' });
   }
 });
