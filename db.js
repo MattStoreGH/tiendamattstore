@@ -1,15 +1,16 @@
 // backend/db.js
+require('dotenv').config();
 const { Pool } = require('pg');
 
-const db = new Pool({
-  user: 'tiendamattstore_db_user',
-  host: 'dpg-d1fmbcnfte5s73fmhosg-a',
-  database: 'tiendamattstore_db',
-  password: 'p9qiXNajQcMXBUMnqvr78fY1mcyl0EQO',
+const pool = new Pool({
+  host: process.env.DB_HOST,
   port: 5432,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   ssl: {
     rejectUnauthorized: false
   }
 });
 
-module.exports = db;
+module.exports = pool;
