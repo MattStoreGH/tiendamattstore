@@ -1,14 +1,15 @@
-const mysql = require('mysql2');
-require('dotenv').config();
+// backend/db.js
+const { Pool } = require('pg');
 
-const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT,
-  waitForConnections: true,
-  connectionLimit: 10
+const db = new Pool({
+  user: 'tiendamattstore_db_user',
+  host: 'dpg-d1fmbcnfte5s73fmhosg-a',
+  database: 'tiendamattstore_db',
+  password: 'p9qiXNajQcMXBUMnqvr78fY1mcyl0EQO',
+  port: 5432,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
-module.exports = pool.promise();
+module.exports = db;
